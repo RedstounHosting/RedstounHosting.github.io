@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<header class="navbar py-0"
+    style="background-color: rgba(0,0,0,0.4); backdrop-filter: blur(15px); height: auto; min-height: 4em; border-top: #228672 solid 3px; color: white;  position: fixed; top: 0; left: 0; right: 0; z-index: 100;">
+    <div class="container">
+        <div class="row w-100 h-100">
+            <div class="col-auto">
+                <h1><a href="/" class="logo text-decoration-none text-white">RestounHosting</a></h1>
+            </div>
+            <div class="col"></div>
+            <div class="col-auto d-flex align-items-center">
+                <a class="mx-2 text-decoration-none text-white" href="/games">Hry</a>
+                <a class="mx-2 text-decoration-none text-white" href="https://wikipedia.com">Znalostní báze</a>
+                <button class="btn btn-primary mb-2 mb-sm-0"
+                    style="background-color: #228672FF; border-color: #006669;">Administrace</button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="/static/theme.css">
+
+    <script>
+        AOS.init({ once: true });
+    </script>
+
+</header>
+
+<video playsinline muted loop autoplay id="game-preview"
+       class="position-absolute top-0 w-100 h-100 z-n1 object-fit-cover" style="filter: brightness(60%);">
+    <source src="/static/videos/Minecraft_cover.mp4" type="video/mp4" id="js-video">
+</video>
+
+<section class="hero d-flex justify-content-center" style="min-height: 94vh; position: relative; z-index: 1;">
+    <div class="h-100 d-flex flex-column justify-content-around px-5" style="min-height: 99vh;">
+        <div class="text-center text-white mt-5">
+        </div>
+        <div class="col-12 d-flex justify-content-center align-items-center flex-column">
+            <div class="text-center text-white mt-5 ">
+                <h1 id="typewriter-element">Spolehlivý herní server hosting</h1>
+                <h4>Hostujte u nás více než 50 her.</h4>
+                <img src="/static/img/design/scroll_arrow.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer position-absolute bottom-0" style="background-image: url('/static/img/design/separator.svg');">
+        <img src="/static/img/deco/boat.svg" class="position-absolute"
+             style="width: 4vw; bottom: 8.5vh;  left:5vw;transform: rotateZ(3deg); z-index: -1; filter: brightness(80%);" alt="">
+        <img src="/static/img/deco/boat.svg" class="position-absolute"
+             style="width: 2.5vw; bottom: 8.5vh;  left:20vw;transform: rotateZ(-3deg); z-index: -1; filter: brightness(60%)" alt="">
+        <img src="/static/img/deco/boat.svg" class="position-absolute"
+             style="width: 3vw; bottom: 7vh;  right:5vw;transform: rotateZ(-2deg); z-index: -1; filter: brightness(70%)" alt="">
+        <img src="/static/img/deco/boat.svg" class="position-absolute"
+             style="width: 2.5vw; bottom: 7.1vh;  right:25vw;transform: rotateZ(3deg) scaleX(-1); z-index: -1; filter: brightness(65%)" alt="">
+    </div>
+</section>
+
+<section class="text-white text-center position-relative overflow-hidden" style="background-color: #03101f; z-index=-1;" id="games-section">
+
+    <h2 class="mb-4 h1">Nejhranější hry</h2>
+    <img src="/static/img/deco/submarine.svg" class="position-absolute" id="submarine"
+         style="left: 0; z-index: 1; transform: translate(0%, 0%) rotateZ(30deg); top: 0; height:30%; transform-origin: center;" alt="">
+    <script>
+        const submarine = document.querySelector('#submarine');
+        const parent = document.querySelector("#games-section");
+        let lastScrollTop = 0;
+        let submarineX = -100;
+        let submarineY = -10;
+
+        const angle = 20 * Math.PI / 180;
+        const cosAngle = Math.cos(angle);
+        const sinAngle = Math.sin(angle);
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+
+            bubble.style.left = `${submarine.getBoundingClientRect().left + Math.random()*20-10}px`;
+            bubble.style.top = `${submarine.getBoundingClientRect().top + window.pageYOffset+120 + Math.random()*20-10}px`;
+
+            document.body.appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 2000);
+        }
+
+        function startBubbleTrail() {
+            setInterval(createBubble, 400);
+        }   
+
+        let i = 0;
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset*0.5 || document.documentElement.scrollTop;
+            let scrollDifference = scrollTop - lastScrollTop;
+
+            let moveX = scrollDifference * cosAngle;
+            let moveY = scrollDifference * sinAngle;
+
+            submarineX += moveX;
+            submarineY += moveY;
+            submarine.style.transform = `translate(${submarineX}%, ${submarineY}%) rotate(10deg)`;
+
+            console.log(submarineX);
+            lastScrollTop = scrollTop;
+
+            if(i % 7 == 0)
+            {
+            createBubble();
+            i=0;
+            }
+
+            i++;
+        });
+
+        startBubbleTrail();
+    </script>
+    <div class="container">
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3 p-0 position-relative" style="z-index:1;" data-aos="flip-up">
+    <div class="box-cover m-3" role="button" style="background-image: url(/static/img/covers/minecraft_cover.webp)" onclick="window.location='/minecraft'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Minecraft</h5>
+                <h5 class="my-2 d-block d-md-none">Od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">Od 10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <div class="col-6 col-md-3 p-0 position-relative" style="z-index:1;" data-aos="flip-up">
+    <div class="box-cover m-3" role="button" style="background-image: url(/static/img/covers/satisfactory_cover.webp)" onclick="window.location='/satisfactory'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Satisfactory</h5>
+                <h5 class="my-2 d-block d-md-none">Od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">Od 10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <div class="col-6 col-md-3 p-0 position-relative" style="z-index:1;" data-aos="flip-up">
+    <div class="box-cover m-3" role="button" style="background-image: url(/static/img/covers/valheim_cover.webp)" onclick="window.location='/valheim'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Valheim</h5>
+                <h5 class="my-2 d-block d-md-none">Od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">Od 10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <div class="col-6 col-md-3 p-0 position-relative" style="z-index:1;" data-aos="flip-up">
+    <div class="box-cover m-3" role="button" style="background-image: url(/static/img/covers/cs2_cover.webp)" onclick="window.location='/c-s2'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">CS2</h5>
+                <h5 class="my-2 d-block d-md-none">Od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">Od 10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a class="float-md-end h5 text-decoration-none" href="games">Zobrazit všechny hry ></a>
+            </div>
+        </div>
+
+        <script>
+            const gameCovers = document.querySelectorAll(".box-cover");
+            let activeIndex = 0;
+            let hoverInterval;
+            let cursorHovering = false;
+
+            function autoHover()
+            {
+                gameCovers.forEach(cover=>cover.classList.remove("hover"));
+                gameCovers[activeIndex].classList.add("hover");
+                activeIndex = (activeIndex+1) % gameCovers.length;
+            }
+
+            function startAutoHover()
+            {
+                hoverInterval = setInterval(autoHover, 2500);
+            }
+
+            function stopAutoHover()
+            {
+                clearInterval(hoverInterval);
+                gameCovers.forEach(cover=>cover.classList.remove("hover"));
+
+                cursorHovering = true;
+            }
+
+            function resumeAutoHovering()
+            {
+                if(!cursorHovering) return;
+                cursorHovering = false;
+                startAutoHover();
+            }
+
+            gameCovers.forEach(cover=>{
+                cover.addEventListener("mouseenter", ()=>{
+                    stopAutoHover();
+                    cover.classList.add("hover");
+                });
+
+                cover.addEventListener("mouseleave", () =>{
+                    cover.classList.remove("hover");
+                    resumeAutoHovering();
+                });
+            });
+
+            startAutoHover();
+        </script>
+    </div>
+    
+</section>
+<br>
+<section class="text-white mt-5 p-3 position-relative overflow-hidden" style="background-color: #062b3c;">
+    <h2 class="h1 text-center mb-5">Ke každému serveru navíc dostanete zdarma</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">Až 3 MySQL databáze</span></h4>
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">Česká podpora</span></h4>
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">Dashboard</span></h4>
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">Zálohy</span></h4>
+        </div>
+        <div class="row justify-content-center">
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">DDoS ochrana</span></h4>
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">Subdoména</span></h4>
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">Návody</span></h4>
+            <h4 class="col-auto"><span class="badge bg-custom-primary" data-aos="flip-down">Plugin manager</span></h4>
+        </div>
+    </div>
+</section>
+
+<section class="container text-white text-center mt-5 mb-5 position-relative" style="">
+                    <img src="/static/img/deco/zralok.svg" class="position-absolute"
+            style="left: 0; top:0; z-index: -6; filter: brightness(50%); transform: translate(30%, 0%) rotateZ(10deg) scale(30%, 30%)" alt="">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="h1">Proč RedstounHosting?</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-4" data-aos="fade-right">
+            <div style="width: 100%; position: relative;">
+                <img src="/static/img/design/blob_0.svg" style="width: 100%;" alt="Blob s ikonou serveru." draggable="false">
+                <img src="/static/img/icons/server.svg" style="width: 50%; position: absolute; left: 25%; top: 25%; filter: brightness(90%);" alt="Ikona serveru." draggable="false">
+            </div>
+            <h2 data-aos="fade" data-aos-delay="150">Výkonné servery</h2>
+            <p data-aos="fade" data-aos-delay="250">Ponoř se do akce bez lagů!<br> Naše herní servery ti poskytnou výkon, který potřebuješ pro epické bitvy
+                bez
+                jediného záseku.<br> Žádné čekání, žádné výpadky, jen čistá herní akce.</p>
+        </div>
+        <div class="col-12 col-md-4" data-aos="fade-down">
+            <div style="width: 100%; position: relative;">
+                <img src="/static/img/design/blob_1.svg" style="width: 100%;" alt="Blob s ikonou raketky." draggable="false">
+                <img src="/static/img/icons/admin.svg" style="width: 50%; position: absolute; left: 25%; top: 25%; filter: brightness(90%);" alt="Ikona serveru." draggable="false">
+            </div>
+            <h2 data-aos="fade" data-aos-delay="150">Snadná administrace</h2>
+            <p data-aos="fade" data-aos-delay="250">Spravujte server moderně a spolehlivě.<br>Naše moderní dashboarda s možností snadné instalace pluginů,
+                změny verze serveru s podporou modpacků a mnoho dalšího.</p>
+        </div>
+        <div class="col-12 col-md-4" data-aos="fade-left">
+            <div style="width: 100%; position: relative;">
+                <img src="/static/img/design/blob_2.svg" style="width: 100%;" alt="Blob s ikonou peněz." draggable="false">
+                <img src="/static/img/icons/price.svg" style="width: 50%; position: absolute; left: 25%; top: 25%; filter: brightness(90%);" alt="Ikona serveru." draggable="false">
+            </div>
+            <h2 data-aos="fade" data-aos-delay="150">Levné ceny</h2>
+            <p data-aos="fade" data-aos-delay="250">Epické hraní za férovou cenu!<br> Naše servery ti poskytují společné zážitky s přátely bez toho aby
+                zruinovaly tvou peněženku.</p>
+        </div>
+    </div>
+</section>
+<div style="height:100px; width:100%; position:relative;">
+        <img src="/static/img/deco/whale.svg" class="position-absolute"
+         style="filter: invert(16%) sepia(54%) saturate(3334%) hue-rotate(170deg) brightness(91%) contrast(101%); right: 0; top:0; z-index: -5; transform: translate(30%, -30%) rotateZ(10deg) scaleX(-100%) scale(30%, 30%)" alt="">
+</div>
+
+<section class="container text-white text-center position-relativeb mb-5">
+    <div class="row justify-content-around align-center">
+        <div class="col-12 col-md-4 position-relative" data-aos="fade-right">
+            <div class="w-100 h-100" style="position: absolute; top: 15%; left:0; right:0; transform: scale(200%) rotateZ(-3deg) translate(0%, 5%);">
+                <div class="position-relative w-100 h-100">
+                    <img style="filter: brightness(80%);" class="w-100 h-100" src="/static/img/deco/plank.svg">
+                </div>
+            </div>
+            <h2 data-aos="fade" data-aos-delay="150" style="transform: rotateZ(-3deg);">První týden na <strong>NÁS</strong></h2>
+            <h5 data-aos="fade" data-aos-delay="250" style="transform: rotateZ(-3deg);">Při registraci Vám poskytneme <storng>50 kreditů ZDARMA!</strong><br><strong>Bez nutnosti platební karty!</strong></h5>
+        </div>
+    </div>
+</section>
+
+<br><br><br><br> <!-- messy fix for now -->
+<footer class="text-white text-center" style="background-color: #545454;">
+    <div class="footer" style="background-image: url('/static/img/design/footer.svg');"></div>
+    <p>Způsoby platby</p>
+    <p class="m-0">Legální kecy, hecy, tácy.</p>
+</footer>

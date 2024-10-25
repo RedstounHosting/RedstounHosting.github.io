@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="135mm"
+   height="80mm"
+   viewBox="0 0 135 80"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="zralok.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0242632"
+     inkscape:cx="315.83678"
+     inkscape:cy="245.54235"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="163"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Vrstva 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#175a4c;stroke-width:1.63633"
+       d="m 4.0732266,3.0103667 c 0,0 6.9780184,4.28875 8.8676834,6.8256 11.334692,15.2167803 50.587897,16.0186703 49.309587,14.3437603 -3.53831,-4.63602 2.37163,-17.8260403 0.56484,-22.5931103 -0.8033,-2.11945995 9.81796,4.48728 10.23143,11.5355903 0.44931,7.65935 1.14835,11.12419 3.75955,13.01587 1.33534,0.96733 11.1854,3.10954 15.19747,4.13921 18.589353,4.77072 16.679583,8.63224 31.530483,16.49556 3.26031,1.7263 3.50527,1.07321 6.71772,2.83829 4.761,2.61601 5.34874,7.6051 -3.97091,5.91065 -9.31967,-1.69451 -8.52538,-0.0971 -13.58962,1.98624 -1.58867,0.65353 -9.95612,3.64525 -15.978443,3.70475 -4.2901,0.0433 -7.72563,-0.12431 -11.58701,-0.0371 -0.75088,0.0186 -1.31711,0.98625 -1.31711,0.98625 0,0 -2.9352,11.56052 -14.63926,16.80584 -0.46687,0.20904 -0.77664,-13.48528 -0.52952,-18.53343 0.0618,-1.26203 -1.26866,-1.96144 -3.29906,-2.30067 -2.0304,-0.33953 -6.79037,-3.48432 -22.04316,-10.58885 -10.56469,-4.92088 -13.8151,-12.51115 -25.619658,-19.9857 -0.879453,-0.55661 -15.5919064,6.74533 -16.3773104,5.97083 -1.01464103,-1.0006 6.026039,-6.60729 8.3992461,-12.0948"
+       id="path1"
+       sodipodi:nodetypes="csssssssssssscssssssc" />
+  </g>
+</svg>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<header class="navbar py-0"
+    style="background-color: rgba(0,0,0,0.4); backdrop-filter: blur(15px); height: auto; min-height: 4em; border-top: #228672 solid 3px; color: white;  position: fixed; top: 0; left: 0; right: 0; z-index: 100;">
+    <div class="container">
+        <div class="row w-100 h-100">
+            <div class="col-auto">
+                <h1><a href="/" class="logo text-decoration-none text-white">RestounHosting</a></h1>
+            </div>
+            <div class="col"></div>
+            <div class="col-auto d-flex align-items-center">
+                <a class="mx-2 text-decoration-none text-white" href="/games">Hry</a>
+                <a class="mx-2 text-decoration-none text-white" href="https://wikipedia.com">Znalostní báze</a>
+                <button class="btn btn-primary mb-2 mb-sm-0"
+                    style="background-color: #228672FF; border-color: #006669;">Administrace</button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="/static/theme.css">
+
+    <script>
+        AOS.init({ once: true });
+    </script>
+
+</header>
+
+<div style="height: 30vh;">
+
+</div>
+<div class="container text-center text-white">
+    <div class="row">
+        <h1>Vyberte si svou hru</h1>
+        <h3>Z naší bohaté nabídky</h3>
+        <br>
+    </div>
+    <div class="row">
+        <div class="px-3 mt-5 col-10 offset-1">
+            <input class="w-100" style="background-color: #031d29" id="search_bar">
+        </div>
+
+        <div class="d-none" id="template"><div class="col-4 col-lg-2 p-0 position-relative" data-aos="flip-up">
+    <div class="auto-box-hover m-3" role="button" style="background-image: url(/static/img/covers/minecraft_cover.webp)" onclick="window.location='/minecraft'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Již od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+        <div style="background-color: #004857"></div>
+    </div>
+    <div class="row mt-3" id="search-results" style="background-color: #004857; border-radius:15px;">
+
+    </div>
+    <div class="row">
+        
+            <div class="col-4 col-lg-2 p-0 position-relative" data-aos="flip-up">
+    <div class="auto-box-hover m-3" role="button" style="background-image: url(/static/img/covers/minecraft_cover.webp)" onclick="window.location='/minecraft'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Již od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="col-4 col-lg-2 p-0 position-relative" data-aos="flip-up">
+    <div class="auto-box-hover m-3" role="button" style="background-image: url(/static/img/covers/satisfactory_cover.webp)" onclick="window.location='/satisfactory'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Již od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="col-4 col-lg-2 p-0 position-relative" data-aos="flip-up">
+    <div class="auto-box-hover m-3" role="button" style="background-image: url(/static/img/covers/valheim_cover.webp)" onclick="window.location='/valheim'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Již od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="col-4 col-lg-2 p-0 position-relative" data-aos="flip-up">
+    <div class="auto-box-hover m-3" role="button" style="background-image: url(/static/img/covers/cs2_cover.webp)" onclick="window.location='/c-s2'">
+        <div class="d-flex flex-column justify-content-end h-100">
+            <div style="background-color: #004756;"
+                 class="d-inline-flex align-items-end justify-content-around justify-content-md-between p-1">
+                <h5 class="my-2 d-none d-md-block">Již od</h5>
+                <div class="d-inline-flex h-100 align-items-end">
+                    <h4 class="my-2">10Kč</h4>
+                    <h6 class="my-2">/měsíc</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+
+            <script>
+            function editDistance(s1, s2) {
+                s1 = s1.toLowerCase();
+                s2 = s2.toLowerCase();
+
+                var costs = new Array();
+                for (var i = 0; i <= s1.length; i++) {
+                    var lastValue = i;
+                    for (var j = 0; j <= s2.length; j++) {
+                        if (i == 0)
+                            costs[j] = j;
+                        else {
+                            if (j > 0) {
+                            var newValue = costs[j - 1];
+                            if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                                newValue = Math.min(Math.min(newValue, lastValue),
+                                costs[j]) + 1;
+                            costs[j - 1] = lastValue;
+                            lastValue = newValue;
+                            }
+                        }
+                    }
+                    if (i > 0)
+                    costs[s2.length] = lastValue;
+                }
+                return costs[s2.length];
+            }
+
+            function similarity(s1, s2) {   
+                var longer = s1;
+                var shorter = s2;
+                if (s1.length < s2.length) {
+                    longer = s2;
+                    shorter = s1;
+                }
+                var longerLength = longer.length;
+                if (longerLength == 0) {
+                    return 1.0;
+                }
+                return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+            }
+
+            function compare(o1,o2)
+            {
+                if(o1.similarity > o2.similarity)
+                {
+                    return -1;
+                }
+                if(o1.similarity < o2.similarity)
+                {
+                    return 1;
+                }
+
+                return 0;
+            }
+
+            const searchBar = document.getElementById("search_bar");
+            const searchResults = document.getElementById("search-results");
+            const template = document.getElementById("template");
+            const games = [
+            
+                {"name": "Minecraft", "cover": "/static/img/covers/minecraft_cover.webp", "cheapest_offer": 10, "slug":""},
+            
+                {"name": "Satisfactory", "cover": "/static/img/covers/satisfactory_cover.webp", "cheapest_offer": 10, "slug":""},
+            
+                {"name": "Valheim", "cover": "/static/img/covers/valheim_cover.webp", "cheapest_offer": 10, "slug":""},
+            
+                {"name": "CS2", "cover": "/static/img/covers/cs2_cover.webp", "cheapest_offer": 10, "slug":""},
+            
+            ];
+
+            searchBar.addEventListener("input", function(evt){
+                if(searchBar.value.trim() == "")
+                {
+                    searchResults.innerHTML = "";
+                    return;
+                }
+
+                rank = []
+                games.forEach((game)=>{
+                    rank.push({"similarity": similarity(game.name, searchBar.value), "game": game})
+                });
+
+                rank.sort(compare);
+
+                if(window.matchMedia("(max-width: 995px)").matches)
+                    rank = rank.slice(0,3);
+                else
+                    rank = rank.slice(0,6);
+
+                searchResults.innerHTML = "";
+
+                rank.forEach((game)=>{
+                    console.log(game);
+                    var child = template.firstChild.cloneNode(true);
+                    var c = searchResults.appendChild(child);
+
+                    console.log(c.firstElementChild);
+                    c.firstElementChild.style.backgroundImage = "url('" + game.game.cover + "')";
+                });
+            });
+
+            
+        </script>
+</div>
+
+
+<br><br><br><br> <!-- messy fix for now -->
+<footer class="text-white text-center" style="background-color: #545454;">
+    <div class="footer" style="background-image: url('/static/img/design/footer.svg');"></div>
+    <p>Způsoby platby</p>
+    <p class="m-0">Legální kecy, hecy, tácy.</p>
+</footer>
