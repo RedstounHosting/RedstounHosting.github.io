@@ -87,6 +87,8 @@ body {
 }
 
 
+
+
 .floating-animation {
   transform: translatey(0px);
   animation: float 6s ease-in-out infinite;
@@ -102,6 +104,7 @@ body {
 }*/
 
 .bubble {
+  overflow: hidden;
   position: absolute;
   width: 30px;
   height: 30px;
@@ -109,7 +112,7 @@ body {
   border: solid white 1px;
   border-radius: 50%;
   opacity: 0;
-  z-index: 0;
+  z-index: 1;
   animation: bubbleMove 2s linear forwards;
   animation-iteration-count: infinite;
 }

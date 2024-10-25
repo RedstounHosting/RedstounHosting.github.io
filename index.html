@@ -35,6 +35,9 @@
 
 </header>
 
+<div class="overflow-hidden w-100 h-100" id="bubble-wrapper" style="overflow-x:hidden;">
+</div>
+
 <video playsinline muted loop autoplay id="game-preview"
        class="position-absolute top-0 w-100 h-100 z-n1 object-fit-cover" style="filter: brightness(60%);">
     <source src="/static/videos/Minecraft_cover.mp4" type="video/mp4" id="js-video">
@@ -72,8 +75,11 @@
         style="left: 0; z-index: 1; transform: translate(0%, 0%) rotateZ(30deg); top: 0; height:30%; transform-origin: center;" alt="">
 
     <script>
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
         const submarine = document.querySelector('#submarine');
         const parent = document.querySelector("#games-section");
+        const bubbleParent = document.querySelector("#bubble-wrapper");
         let lastScrollTop = 0;
         let submarineX = -100;
         let submarineY = -10;
@@ -89,7 +95,7 @@
             bubble.style.left = `${submarine.getBoundingClientRect().left + Math.random()*20-10}px`;
             bubble.style.top = `${submarine.getBoundingClientRect().top + window.pageYOffset+120 + Math.random()*20-10}px`;
 
-            parent.appendChild(bubble);
+            bubbleParent.appendChild(bubble);
 
             setTimeout(() => {
                 bubble.remove();
@@ -116,16 +122,23 @@
             console.log(submarineX);
             lastScrollTop = scrollTop;
 
+
+
             if(i % 7 == 0)
             {
+            if(!isMobile){
             createBubble();
+            }
             i=0;
             }
 
             i++;
         });
 
-        startBubbleTrail();
+        if (!isMobile) {
+            startBubbleTrail();            
+        }
+
     </script>
     <div class="container">
         <div class="row">
