@@ -198,13 +198,13 @@
             const template = document.getElementById("template");
             const games = [
             
-                {"name": "Minecraft", "cover": "/static/img/covers/minecraft_cover.webp", "cheapest_offer": 10, "slug":""},
+                {"name": "Minecraft", "cover": "/static/img/covers/minecraft_cover.webp", "cheapest_offer": 10, "slug":"minecraft"},
             
-                {"name": "Satisfactory", "cover": "/static/img/covers/satisfactory_cover.webp", "cheapest_offer": 10, "slug":""},
+                {"name": "Satisfactory", "cover": "/static/img/covers/satisfactory_cover.webp", "cheapest_offer": 10, "slug":"satisfactory"},
             
-                {"name": "Valheim", "cover": "/static/img/covers/valheim_cover.webp", "cheapest_offer": 10, "slug":""},
+                {"name": "Valheim", "cover": "/static/img/covers/valheim_cover.webp", "cheapest_offer": 10, "slug":"valheim"},
             
-                {"name": "CS2", "cover": "/static/img/covers/cs2_cover.webp", "cheapest_offer": 10, "slug":""},
+                {"name": "CS2", "cover": "/static/img/covers/cs2_cover.webp", "cheapest_offer": 10, "slug":"c-s2"},
             
             ];
 
@@ -230,12 +230,19 @@
                 searchResults.innerHTML = "";
 
                 rank.forEach((game)=>{
-                    console.log(game);
                     var child = template.firstChild.cloneNode(true);
                     var c = searchResults.appendChild(child);
 
-                    console.log(c.firstElementChild);
                     c.firstElementChild.style.backgroundImage = "url('" + game.game.cover + "')";
+                    console.log(`${window.location.origin}/${game.game.slug}`);
+                    c.firstElementChild.addEventListener("click", function (event) {
+                        if (event.button === 1) { // Middle-click
+                            window.open(`${window.location.origin}/${game.game.slug}`, "_blank");
+                        } else if (event.button === 0) { // Left-click
+                            window.location.href = `${window.location.origin}/${game.game.slug}`;
+                        }
+                    });
+
                 });
             });
 
