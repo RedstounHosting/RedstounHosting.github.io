@@ -6,7 +6,7 @@
             <div class="col-auto">
                 <h1><a href="/" class="logo text-decoration-none text-white">RestounHosting</a></h1>
             </div>
-            <div class="col"></div>
+            <div class="d-none col d-md-block"></div>
             <div class="col-auto d-flex align-items-center">
                 <a class="mx-2 text-decoration-none text-white" href="/games">Hry</a>
                 <a class="mx-2 text-decoration-none text-white" href="https://wikipedia.com">Znalostní báze</a>
@@ -69,7 +69,8 @@
 
     <h2 class="mb-4 h1">Nejhranější hry</h2>
     <img src="/static/img/deco/submarine.svg" class="position-absolute" id="submarine"
-         style="left: 0; z-index: 1; transform: translate(0%, 0%) rotateZ(30deg); top: 0; height:30%; transform-origin: center;" alt="">
+        style="left: 0; z-index: 1; transform: translate(0%, 0%) rotateZ(30deg); top: 0; height:30%; transform-origin: center;" alt="">
+
     <script>
         const submarine = document.querySelector('#submarine');
         const parent = document.querySelector("#games-section");
@@ -88,7 +89,7 @@
             bubble.style.left = `${submarine.getBoundingClientRect().left + Math.random()*20-10}px`;
             bubble.style.top = `${submarine.getBoundingClientRect().top + window.pageYOffset+120 + Math.random()*20-10}px`;
 
-            document.body.appendChild(bubble);
+            parent.appendChild(bubble);
 
             setTimeout(() => {
                 bubble.remove();
