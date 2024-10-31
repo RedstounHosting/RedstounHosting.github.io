@@ -122,8 +122,6 @@
             console.log(submarineX);
             lastScrollTop = scrollTop;
 
-
-
             if(i % 7 == 0)
             {
             if(!isMobile){
@@ -338,10 +336,38 @@
         </div>
     </div>
 </section>
+¨
+<style>
 
+.logo-img {
+    flex: 1 1 auto;
+    max-width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.payments-display {
+    gap: 1vw;
+}
+
+</style>
 <br><br><br><br> <!-- messy fix for now -->
 <footer class="text-white text-center" style="background-color: #545454;">
     <div class="footer" style="background-image: url('/static/img/design/footer.svg');"></div>
-    <p>Způsoby platby</p>
-    <p class="m-0">Legální kecy, hecy, tácy.</p>
+    <div class="container w-100 mt-2" style="">
+    <div class="row">
+        <div class="col-md-6 col-12 d-flex justify-content-center flex-wrap flex-md-nowrap payments-display"> 
+            <img src="/static/loga/gp1.png" class="logo-img">
+            <img src="/static/loga/m1.png" class="logo-img">
+            <img src="/static/loga/m2.png" class="logo-img">
+            <img src="/static/loga/m3.png" class="logo-img">
+            <img src="/static/loga/v1.png" class="logo-img">
+            <img src="/static/loga/v2.png" class="logo-img">
+            <img src="/static/loga/v3.png" class="logo-img">
+        </div>
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+            <a href="/static/VOP.pdf" class="text-white">VOP</a>
+        </div>
+    </div>
+    </div>
 </footer>
