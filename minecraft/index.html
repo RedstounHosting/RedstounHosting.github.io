@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row w-100 h-100">
             <div class="col-auto d-flex">
-                <img src="/static/logo.svg" height="10vh;" style="filter: invert(43%) sepia(46%) saturate(546%) hue-rotate(118deg) brightness(93%) contrast(98%);; height=1px; width:50px; !important;" class="mx-5 logo-img">
+                <img src="/static/logo.svg" height="10vh;" style="filter: invert(43%) sepia(46%) saturate(546%) hue-rotate(118deg) brightness(93%) contrast(98%);; height=1px; width:50px; !important;" class="mx-0 mx-md-5 logo-img">
                 <h1><a href="/" class="logo text-decoration-none text-white">DeepHost</a></h1>
             </div>
             <div class="d-none col d-md-block"></div>
@@ -62,7 +62,6 @@
     <style>
         @media (max-width: 765px) {
             .top-container {
-                top: -10% !important;
             }
         }
     </style>
@@ -269,7 +268,7 @@
         </div>
     </div>
 </div>
-                    <div class="card p-2 floating-cards" style="position:block;width:15vw; min-width: 300px;min-height:10vh; overflow:hidden;text-align:left;; z-index:0; background-color: #004857; color:white; border: 0.15rem solid " data-aos="zoom-in-up">
+                    <!-- messy fix for now <div class="card p-2 floating-cards" style="position:block;width:15vw; min-width: 300px;min-height:10vh; overflow:hidden;text-align:left;; z-index:0; background-color: #004857; color:white; border: 0.15rem solid " data-aos="zoom-in-up">
     <div class="d-flex h-100">
         <img src="/static/img/icons/rocket.svg" style="aspect-ratio: 1; height:80%; position: absolute; filter:brightness(60%); bottom:0%; right: 0%; transform:translate(10%, 15%) scale(75%);">
         <div class="w-100 h-100 d-flex flex-column justify-content-start" style="z-index:999;">
@@ -277,13 +276,13 @@
             <p style="m-1">Snadno nainstalujte populární pluginy.</p>
         </div>
     </div>
-</div>
+</div>-->
                 </div>
 
                 <script>
                     function randomizePositions() {
         const container = document.getElementById('versions-div');
-        const cards = container.getElementsByClassName('floating-cards');
+        var cards = container.getElementsByClassName('floating-cards');
         const containerWidth = container.clientWidth;
         const containerHeight = container.clientHeight;
         const padding = 20;
@@ -293,15 +292,44 @@
 
         const fixed_text = document.getElementById("versions_title");
 
+        var complete = true
+
+        if (window.innerWidth <= 720) {
+            cards = Array.from(cards);
+            const center = containerWidth / 2;
+            const scrollDuration = 15; // Duration for each card to scroll across the screen
+            const splitIndex = Math.floor(cards.length / 2); // Divide cards into two groups
+
+            // Split cards into left and right groups without cloning
+            const leftCards = cards.slice(0, splitIndex);
+            const rightCards = cards.slice(splitIndex);
+
+            // Left side: cards scroll from top to bottom
+            leftCards.forEach((card, index) => {
+                card.style.left = `0`; // Position on the left
+                card.style.opacity = `0`
+                card.style.animation = `scroll-down ${scrollDuration}s linear infinite`;
+                card.style.animationDelay = `${index * 2}s`; // Staggered delay
+            });
+
+            // Right side: cards scroll from bottom to top
+            rightCards.forEach((card, index) => {
+                card.style.right = `0`; // Position on the right
+                card.style.opacity = `0`
+                card.style.animation = `scroll-up ${scrollDuration}s linear infinite`;
+                card.style.animationDelay = `${index * 2}s`; // Staggered delay
+            });
+
+            fixed_text.style.transform = `translate(-50%, -50%)`;
+
+
+            return;
+        }
+
         fixed_text.style.left = fixed_text.offsetLeft-fixed_text.offsetWidth/2 + 'px';
         fixed_text.style.top = fixed_text.offsetTop-fixed_text.offsetHeight/2 + 'px';
 
         positions.push({ x: Number(fixed_text.style.left.slice(0,-2)), y: Number(fixed_text.style.top.slice(0,-2)), width: fixed_text.offsetWidth, height: fixed_text.offsetHeight });
-
-        if(window.innerWidth <= 720)
-        {
-            return;
-        }
 
         for (let i = 0; i < cards.length; i++) {
             let card = cards[i];
@@ -317,6 +345,7 @@
             let r = 0;
 
             while (overlap) {
+
                 overlap = false;
                 posX = Math.floor(Math.random() * maxX) + padding;
                 posY = Math.floor(Math.random() * maxY) + padding;
@@ -332,6 +361,7 @@
                         cards[u].style.top = u*card.height + 'px';
                     }
                     console.log("solver stopped");
+                    complete = false;
                     return;
                 }
 
@@ -377,6 +407,30 @@
         }
         100% {
             transform: translateY(0); /* Return to original position */
+        }
+
+        
+    }
+
+    @keyframes scroll-down {
+        0% {
+            transform: translateY(-100%);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh);
+            opacity: 1;
+        }
+    }
+
+    @keyframes scroll-up {
+        0% {
+            transform: translateY(100vh);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100%);
+            opacity: 1;
         }
     }
 
